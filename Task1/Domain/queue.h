@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 #include <stdexcept>
@@ -8,15 +8,15 @@ template <typename T>
 class Queue
 {
 private:
-    T* data;        // Массив для хранения элементов очереди
-    size_t capacity; // Вместимость очереди
-    size_t front;    // Индекс переднего элемента
-    size_t rear;     // Индекс заднего элемента
-    size_t count;    // Количество элементов в очереди
+    T* data;        // РњР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РѕС‡РµСЂРµРґРё
+    size_t capacity; // Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ РѕС‡РµСЂРµРґРё
+    size_t front;    // РРЅРґРµРєСЃ РїРµСЂРµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
+    size_t rear;     // РРЅРґРµРєСЃ Р·Р°РґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°
+    size_t count;    // РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РѕС‡РµСЂРµРґРё
 
 public:
-    Queue(size_t size); // Конструктор
-    ~Queue();           // Деструктор
+    Queue(size_t size); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Queue();           // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
     void enqueue(const T& element);
     T dequeue();
@@ -24,18 +24,18 @@ public:
     bool isEmpty() const;
     std::string toString() const;
 
-    // Операторы
+    // РћРїРµСЂР°С‚РѕСЂС‹
     Queue<T>& operator=(const Queue<T>& other);
     Queue<T>& operator=(Queue<T>&& other) noexcept;
 
-    // Друзья
+    // Р”СЂСѓР·СЊСЏ
     friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue) {
         os << queue.toString();
         return os;
     }
 };
 
-// Реализация методов Queue
+// Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ Queue
 template <typename T>
 Queue<T>::Queue(size_t size)
     : capacity(size), front(0), rear(0), count(0)
@@ -54,7 +54,7 @@ void Queue<T>::enqueue(const T& element)
 {
     if (count == capacity)
     {
-        throw std::overflow_error("Очередь заполнена");
+        throw std::overflow_error("РћС‡РµСЂРµРґСЊ Р·Р°РїРѕР»РЅРµРЅР°");
     }
     data[rear] = element;
     rear = (rear + 1) % capacity;
@@ -66,7 +66,7 @@ T Queue<T>::dequeue()
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::underflow_error("РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°");
     }
     T item = data[front];
     front = (front + 1) % capacity;
@@ -79,7 +79,7 @@ T Queue<T>::peek() const
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::underflow_error("РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°");
     }
     return data[front];
 }
@@ -96,7 +96,7 @@ std::string Queue<T>::toString() const
     std::ostringstream oss;
     if (isEmpty())
     {
-        oss << "Очередь пуста";
+        oss << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°";
     }
     else
     {
@@ -140,6 +140,6 @@ Queue<T>& Queue<T>::operator=(Queue<T>&& other) noexcept
     rear = other.rear;
     count = other.count;
 
-    other.data = nullptr; // Предотвращаем удаление
+    other.data = nullptr; // РџСЂРµРґРѕС‚РІСЂР°С‰Р°РµРј СѓРґР°Р»РµРЅРёРµ
     return *this;
 }

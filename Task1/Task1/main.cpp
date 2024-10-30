@@ -1,40 +1,40 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "../Domain/queue.h"
 #include <locale.h>
 
 void displayMenu()
 {
-    std::cout << "Выберите действие:\n";
-    std::cout << "1. Добавить элемент в очередь (enqueue)\n";
-    std::cout << "2. Извлечь элемент из очереди (dequeue)\n";
-    std::cout << "3. Посмотреть головной элемент (peek)\n";
-    std::cout << "4. Проверить, пуста ли очередь (isEmpty)\n";
-    std::cout << "5. Вывести содержимое очереди (toString)\n";
-    std::cout << "0. Выход\n";
+    std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ:\n";
+    std::cout << "1. Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ (enqueue)\n";
+    std::cout << "2. РР·РІР»РµС‡СЊ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё (dequeue)\n";
+    std::cout << "3. РџРѕСЃРјРѕС‚СЂРµС‚СЊ РіРѕР»РѕРІРЅРѕР№ СЌР»РµРјРµРЅС‚ (peek)\n";
+    std::cout << "4. РџСЂРѕРІРµСЂРёС‚СЊ, РїСѓСЃС‚Р° Р»Рё РѕС‡РµСЂРµРґСЊ (isEmpty)\n";
+    std::cout << "5. Р’С‹РІРµСЃС‚Рё СЃРѕРґРµСЂР¶РёРјРѕРµ РѕС‡РµСЂРµРґРё (toString)\n";
+    std::cout << "0. Р’С‹С…РѕРґ\n";
 }
 
 int main()
 {
     setlocale(LC_ALL, "RU");
-    Queue<int> queue(5); // Создаем очередь на 5 элементов
+    Queue<int> queue(5); // РЎРѕР·РґР°РµРј РѕС‡РµСЂРµРґСЊ РЅР° 5 СЌР»РµРјРµРЅС‚РѕРІ
     int choice;
     int element;
 
     do
     {
         displayMenu();
-        std::cout << "Ваш выбор: ";
+        std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
         std::cin >> choice;
 
         switch (choice)
         {
         case 1:
-            std::cout << "Введите элемент для добавления: ";
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ: ";
             std::cin >> element;
             try
             {
                 queue.enqueue(element);
-                std::cout << "Элемент " << element << " добавлен в очередь.\n";
+                std::cout << "Р­Р»РµРјРµРЅС‚ " << element << " РґРѕР±Р°РІР»РµРЅ РІ РѕС‡РµСЂРµРґСЊ.\n";
             }
             catch (const std::exception& e)
             {
@@ -45,7 +45,7 @@ int main()
             try
             {
                 element = queue.dequeue();
-                std::cout << "Извлечен элемент: " << element << std::endl;
+                std::cout << "РР·РІР»РµС‡РµРЅ СЌР»РµРјРµРЅС‚: " << element << std::endl;
             }
             catch (const std::exception& exception)
             {
@@ -56,7 +56,7 @@ int main()
             try
             {
                 element = queue.peek();
-                std::cout << "Головной элемент: " << element << std::endl;
+                std::cout << "Р“РѕР»РѕРІРЅРѕР№ СЌР»РµРјРµРЅС‚: " << element << std::endl;
             }
             catch (const std::exception& e)
             {
@@ -64,16 +64,16 @@ int main()
             }
             break;
         case 4:
-            std::cout << (queue.isEmpty() ? "Очередь пуста." : "Очередь не пуста.") << std::endl;
+            std::cout << (queue.isEmpty() ? "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°." : "РћС‡РµСЂРµРґСЊ РЅРµ РїСѓСЃС‚Р°.") << std::endl;
             break;
         case 5:
-            std::cout << "Содержимое очереди: " << queue << std::endl;
+            std::cout << "РЎРѕРґРµСЂР¶РёРјРѕРµ РѕС‡РµСЂРµРґРё: " << queue << std::endl;
             break;
         case 0:
-            std::cout << "Выход из программы.\n";
+            std::cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.\n";
             break;
         default:
-            std::cout << "Некорректный выбор. Пожалуйста, попробуйте снова.\n";
+            std::cout << "РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІС‹Р±РѕСЂ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.\n";
             break;
         }
         std::cout << std::endl;

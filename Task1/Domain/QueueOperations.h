@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "../Domain/queue.h"
 
 template <typename T>
@@ -10,7 +10,6 @@ public:
     static T peek(const Queue<T>& queue);
 };
 
-// Implementation of QueueOperations methods
 template <typename T>
 void QueueOperations<T>::enqueue(Queue<T>& queue, const T& element)
 {
