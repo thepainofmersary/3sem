@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="queue.h" />
+    <ClInclude Include="QueueOperations.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="queue.cpp" />
+    <ClCompile Include="QueueOperations.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

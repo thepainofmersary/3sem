@@ -16,7 +16,7 @@ void displayMenu()
 int main()
 {
     setlocale(LC_ALL, "RU");
-    Queue<int> queue(5); // Создаем очередь на 5 элементов
+    Queue<int> queue(5); // Очередь 5 элементов
     int choice;
     int element;
 
@@ -36,9 +36,9 @@ int main()
                 queue.enqueue(element);
                 std::cout << "Элемент " << element << " добавлен в очередь.\n";
             }
-            catch (const std::exception& e)
+            catch (const std::exception& exception)
             {
-                std::cout << e.what() << std::endl;
+                std::cout << exception.what() << std::endl;
             }
             break;
         case 2:
@@ -49,7 +49,7 @@ int main()
             }
             catch (const std::exception& exception)
             {
-                std::cout << e.what() << std::endl;
+                std::cout << exception.what() << std::endl;
             }
             break;
         case 3:
@@ -58,9 +58,9 @@ int main()
                 element = queue.peek();
                 std::cout << "Головной элемент: " << element << std::endl;
             }
-            catch (const std::exception& e)
+            catch (const std::exception& exception)
             {
-                std::cout << e.what() << std::endl;
+                std::cout << exception.what() << std::endl;
             }
             break;
         case 4:

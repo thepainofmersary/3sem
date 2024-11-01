@@ -15,8 +15,8 @@ private:
     size_t count;    // Количество элементов в очереди
 
 public:
-    Queue(size_t size); // Конструктор
-    ~Queue();           // Деструктор
+    Queue(size_t size); 
+    ~Queue();           
 
     void enqueue(const T& element);
     T dequeue();
@@ -24,18 +24,16 @@ public:
     bool isEmpty() const;
     std::string toString() const;
 
-    // Операторы
     Queue<T>& operator=(const Queue<T>& other);
     Queue<T>& operator=(Queue<T>&& other) noexcept;
 
-    // Друзья
-    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue) {
+    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue) 
+    {
         os << queue.toString();
         return os;
     }
 };
 
-// Реализация методов Queue
 template <typename T>
 Queue<T>::Queue(size_t size)
     : capacity(size), front(0), rear(0), count(0)
@@ -140,6 +138,6 @@ Queue<T>& Queue<T>::operator=(Queue<T>&& other) noexcept
     rear = other.rear;
     count = other.count;
 
-    other.data = nullptr; // Предотвращаем удаление
+    other.data = nullptr; 
     return *this;
 }
