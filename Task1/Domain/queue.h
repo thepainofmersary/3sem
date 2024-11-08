@@ -16,7 +16,10 @@ private:
 
 public:
     Queue(size_t size); 
-    ~Queue();           
+    ~Queue();
+    Queue(const Queue<T>& other);
+    Queue(Queue<T>&& other) noexcept;
+    Queue(std::initializer_list<T> other);
 
     void enqueue(const T& element);
     T dequeue();
@@ -41,6 +44,7 @@ Queue<T>::Queue(size_t size)
     data = new T[capacity];
 }
 
+
 template <typename T>
 Queue<T>::~Queue()
 {
@@ -50,7 +54,7 @@ Queue<T>::~Queue()
 template <typename T>
 void Queue<T>::enqueue(const T& element)
 {
-    if (count == capacity)
+    if (isEmpty())
     {
         throw std::overflow_error("Очередь заполнена");
     }
@@ -127,6 +131,28 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& other)
 }
 
 template <typename T>
+Queue<T>::Queue(Queue<T>&& other) noexcept 
+    : data(other.data), capacity(other.capacity), front(other.front), rear(other.rear), count(other.count) 
+{
+    other.data = nullptr;
+    other.capacity = 0;
+    other.front = 0;
+    other.rear = 0;
+    other.count = 0;
+}
+
+template <typename T>
+Queue<T>::Queue(const Queue<T>& other)
+    : data(new T[other.capacity]), capacity(other.capacity), front(other.front), rear(other.rear), count(other.count)
+{
+    for (size_t i = 0; i < other.count; ++i) 
+    {
+        data[i] = other.data[i];
+    }
+}
+
+
+template <typename T>
 Queue<T>& Queue<T>::operator=(Queue<T>&& other) noexcept
 {
     if (this == &other) return *this;
@@ -138,6 +164,7 @@ Queue<T>& Queue<T>::operator=(Queue<T>&& other) noexcept
     rear = other.rear;
     count = other.count;
 
-    other.data = nullptr; 
+    other.data = nullptr;
     return *this;
 }
+
