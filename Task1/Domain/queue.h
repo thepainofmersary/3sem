@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream>
+#include <initializer_list>
 
 template <typename T>
 class Queue
@@ -15,35 +16,67 @@ private:
     size_t count;    // Количество элементов в очереди
 
 public:
-    Queue(size_t size); 
-    ~Queue();
-    Queue(const Queue<T>& other);
-    Queue(Queue<T>&& other) noexcept;
+    Queue(size_t size);
     Queue(std::initializer_list<T> other);
+    Queue(const Queue& other);
+    Queue(Queue&& other) noexcept;
+    ~Queue();
 
     void enqueue(const T& element);
-    T dequeue();
+    void dequeue();
     T peek() const;
+    void removeFront();
+
     bool isEmpty() const;
     std::string toString() const;
 
-    Queue<T>& operator=(const Queue<T>& other);
-    Queue<T>& operator=(Queue<T>&& other) noexcept;
+    Queue<T>& operator=(Queue other);
 
-    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue) 
+    friend std::ostream& operator<<(std::ostream& os, const Queue<T>& queue)
     {
         os << queue.toString();
         return os;
     }
+
+    void swap(Queue<T>& other) noexcept;
 };
 
 template <typename T>
 Queue<T>::Queue(size_t size)
-    : capacity(size), front(0), rear(0), count(0)
+    : data(new T[size]{}), capacity(size), front(0), rear(0), count(0)
 {
-    data = new T[capacity];
 }
 
+template <typename T>
+Queue<T>::Queue(std::initializer_list<T> other)
+    : Queue(other.size()) // Делегирование конструктору с размером
+{
+    for (const T& element : other)
+    {
+        enqueue(element);
+    }
+}
+
+template <typename T>
+Queue<T>::Queue(const Queue& other)
+    : data(new T[other.capacity]{}), capacity(other.capacity), front(0), rear(0), count(0)
+{
+    for (size_t i = 0; i < other.count; ++i)
+    {
+        enqueue(other.data[(other.front + i) % other.capacity]);
+    }
+}
+
+template <typename T>
+Queue<T>::Queue(Queue&& other) noexcept
+    : data(other.data), capacity(other.capacity), front(other.front), rear(other.rear), count(other.count)
+{
+    other.data = nullptr;
+    other.capacity = 0;
+    other.front = 0;
+    other.rear = 0;
+    other.count = 0;
+}
 
 template <typename T>
 Queue<T>::~Queue()
@@ -54,7 +87,7 @@ Queue<T>::~Queue()
 template <typename T>
 void Queue<T>::enqueue(const T& element)
 {
-    if (isEmpty())
+    if (count == capacity)
     {
         throw std::overflow_error("Очередь заполнена");
     }
@@ -64,16 +97,13 @@ void Queue<T>::enqueue(const T& element)
 }
 
 template <typename T>
-T Queue<T>::dequeue()
+void Queue<T>::dequeue()
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::logic_error("Очередь пуста");
     }
-    T item = data[front];
-    front = (front + 1) % capacity;
-    count--;
-    return item;
+    removeFront();
 }
 
 template <typename T>
@@ -81,9 +111,20 @@ T Queue<T>::peek() const
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::logic_error("Очередь пуста");
     }
     return data[front];
+}
+
+template <typename T>
+void Queue<T>::removeFront()
+{
+    if (isEmpty())
+    {
+        throw std::logic_error("Очередь пуста");
+    }
+    front = (front + 1) % capacity;
+    count--;
 }
 
 template <typename T>
@@ -111,60 +152,18 @@ std::string Queue<T>::toString() const
 }
 
 template <typename T>
-Queue<T>& Queue<T>::operator=(const Queue<T>& other)
+Queue<T>& Queue<T>::operator=(Queue other)
 {
-    if (this == &other) return *this;
-    delete[] data;
-
-    capacity = other.capacity;
-    front = other.front;
-    rear = other.rear;
-    count = other.count;
-    data = new T[capacity];
-
-    for (size_t i = 0; i < count; ++i)
-    {
-        data[(front + i) % capacity] = other.data[(front + i) % capacity];
-    }
-
+    swap(other);
     return *this;
 }
 
 template <typename T>
-Queue<T>::Queue(Queue<T>&& other) noexcept 
-    : data(other.data), capacity(other.capacity), front(other.front), rear(other.rear), count(other.count) 
+void Queue<T>::swap(Queue<T>& other) noexcept
 {
-    other.data = nullptr;
-    other.capacity = 0;
-    other.front = 0;
-    other.rear = 0;
-    other.count = 0;
+    std::swap(data, other.data);
+    std::swap(capacity, other.capacity);
+    std::swap(front, other.front);
+    std::swap(rear, other.rear);
+    std::swap(count, other.count);
 }
-
-template <typename T>
-Queue<T>::Queue(const Queue<T>& other)
-    : data(new T[other.capacity]), capacity(other.capacity), front(other.front), rear(other.rear), count(other.count)
-{
-    for (size_t i = 0; i < other.count; ++i) 
-    {
-        data[i] = other.data[i];
-    }
-}
-
-
-template <typename T>
-Queue<T>& Queue<T>::operator=(Queue<T>&& other) noexcept
-{
-    if (this == &other) return *this;
-    delete[] data;
-
-    data = other.data;
-    capacity = other.capacity;
-    front = other.front;
-    rear = other.rear;
-    count = other.count;
-
-    other.data = nullptr;
-    return *this;
-}
-

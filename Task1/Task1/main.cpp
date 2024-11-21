@@ -44,7 +44,7 @@ int main()
         case 2:
             try
             {
-                element = queue.dequeue();
+                queue.dequeue();
                 std::cout << "Извлечен элемент: " << element << std::endl;
             }
             catch (const std::exception& exception)
@@ -78,5 +78,6 @@ int main()
         }
         std::cout << std::endl;
     } while (choice != 0);
+
     return 0;
 }
