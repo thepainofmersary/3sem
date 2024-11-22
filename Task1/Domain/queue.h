@@ -49,7 +49,7 @@ Queue<T>::Queue(size_t size)
 
 template <typename T>
 Queue<T>::Queue(std::initializer_list<T> other)
-    : Queue(other.size()) // Делегирование конструктору с размером
+    : Queue(other.size())
 {
     for (const T& element : other)
     {
