@@ -64,7 +64,14 @@ int main()
             }
             break;
         case 4:
-            std::cout << (queue.isEmpty() ? "Очередь пуста." : "Очередь не пуста.") << std::endl;
+            if (queue.isEmpty())
+            {
+                std::cout << "Очередь пуста." << std::endl;
+            }
+            else
+            {
+                std::cout << "Очередь не пуста." << std::endl;
+            }
             break;
         case 5:
             std::cout << "Содержимое очереди: " << queue << std::endl;
