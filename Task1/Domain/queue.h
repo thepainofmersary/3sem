@@ -198,8 +198,8 @@ template <typename T>
 Queue<T>::Queue(const Queue& other)
     : capacity(other.capacity), front(other.front), rear(other.rear), count(other.count)
 {
-    data = new T[other.capacity];
-    for (size_t i = 0; i < other.count; ++i)
+    data = new T[capacity];
+    for (size_t i = 0; i < count; ++i)
 
     {
         data[i] = other.data[i];
