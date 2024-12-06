@@ -1,4 +1,4 @@
-#include "pch.h"
+ο»Ώ#include "pch.h"
 #include "../Domain/queue.h"
 #include <iostream>
 #include <locale.h>
@@ -6,21 +6,21 @@
 TEST(Tostring_Queue_Success)
 {
     Queue<int> q(5);
-    EXPECT_EQ("Ξχεπεδό: ", q.toString());
+    EXPECT_EQ("ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: ", q.toString());
 
 }
 TEST(Enqueue_Queue_Success)
 {
     Queue<int> q(5);
     q.enqueue(10);
-    EXPECT_EQ(q.toString(), "Ξχεπεδό: 10 ");
+    EXPECT_EQ(q.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 10 ");
 }
 
 TEST(Dequeue_Queue_Success)
 {
     Queue<int> q = { 1, 2, 3 };
     q.dequeue();
-    EXPECT_EQ(q.toString(), "Ξχεπεδό: 2 3 ");
+    EXPECT_EQ(q.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 2 3 ");
 }
 
 TEST(Peek_Queue_Success)
@@ -42,14 +42,14 @@ TEST(AssignmentOperator_Copy_Success)
     Queue<int> q1 = { 1, 2, 3 };
     Queue<int> q2(5);
     q2 = q1;
-    EXPECT_EQ(q2.toString(), "Ξχεπεδό: 1 2 3 ");
+    EXPECT_EQ(q2.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 1 2 3 ");
 }
 
 TEST(AssignmentOperator_Move_Success)
 {
     Queue<int> q1 = { 1, 2, 3 };
     Queue<int> q2 = std::move(q1);
-    EXPECT_EQ(q2.toString(), "Ξχεπεδό: 1 2 3 ");
+    EXPECT_EQ(q2.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 1 2 3 ");
     EXPECT_TRUE(q1.isEmpty());
 }
 
@@ -57,21 +57,21 @@ TEST(Constructor_Copy_Success)
 {
     Queue<int> q1 = { 1, 2, 3 };
     Queue<int> q2(q1);
-    EXPECT_EQ(q2.toString(), "Ξχεπεδό: 1 2 3 ");
+    EXPECT_EQ(q2.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 1 2 3 ");
 }
 
 TEST(Constructor_Move_Success)
 {
     Queue<int> q1 = { 1, 2, 3 };
     Queue<int> q2(std::move(q1));
-    EXPECT_EQ(q2.toString(), "Ξχεπεδό: 1 2 3 ");
+    EXPECT_EQ(q2.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 1 2 3 ");
     EXPECT_TRUE(q1.isEmpty());
 }
 
 TEST(InitializerList_Queue_Success)
 {
     Queue<int> q = { 10, 20, 30 };
-    EXPECT_EQ(q.toString(), "Ξχεπεδό: 10 20 30 ");
+    EXPECT_EQ(q.toString(), "ΠΡ‡ΠµΡ€ΠµΠ΄Ρ: 10 20 30 ");
 }
 
 TEST(Enqueue_FullQueue_Throws)
