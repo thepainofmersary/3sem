@@ -9,6 +9,7 @@ TEST(Tostring_Queue_Success)
     EXPECT_EQ("Очередь: ", q.toString());
 
 }
+
 TEST(Enqueue_Queue_Success)
 {
     Queue<int> q(5);
@@ -104,4 +105,18 @@ TEST(Resize_Queue_Success)
     q.resize();
 
     EXPECT_EQ(q.getCapacity(q), 20);
+}
+
+TEST(Enqueue_Queue_Double_Success)
+{
+    Queue<double> q(5);
+    q.enqueue(10.23);
+    EXPECT_EQ(q.toString(), "Очередь: 10.23 ");
+}
+
+TEST(Enqueue_Queue_Char_Success)
+{
+    Queue<char> q(5);
+    q.enqueue('А');
+    EXPECT_EQ(q.toString(), "Очередь: А ");
 }

@@ -13,19 +13,26 @@ void displayMenu()
     std::cout << "0. Выход\n";
 }
 
+void displayMenuDataType()
+{
+    std::cout << "Выберите тип данных, с которым хотите работать:\n";
+    std::cout << "1. int\n";
+    std::cout << "2. double\n";
+    std::cout << "3. string\n";
+}
+
 int main()
 {
     setlocale(LC_ALL, "RU");
-    Queue<int> queue(5); // Очередь 5 элементов
     int choice;
     int element;
+    Queue<int> queue(5);
 
     do
     {
         displayMenu();
         std::cout << "Ваш выбор: ";
         std::cin >> choice;
-
         switch (choice)
         {
         case 1:
@@ -86,6 +93,5 @@ int main()
         }
         std::cout << std::endl;
     } while (choice != 0);
-
     return 0;
 }
