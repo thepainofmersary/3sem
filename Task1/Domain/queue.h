@@ -226,9 +226,10 @@ void Queue<T>::printQueue()
         return;
     }
 
+    size_t tempFront = front;
     for (size_t i = 0; i < count; ++i)
     {
-        std::cout << data[front] << std::endl;
-        front = front + 1;
+        std::cout << data[tempFront] << std::endl;
+        tempFront += 1;
     }
 }

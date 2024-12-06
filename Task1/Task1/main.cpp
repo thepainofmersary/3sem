@@ -74,7 +74,8 @@ int main()
             }
             break;
         case 5:
-            std::cout << "Содержимое очереди: " << queue << std::endl;
+            std::cout << "Содержимое очереди: " << std::endl;
+            queue.printQueue();
             break;
         case 0:
             std::cout << "Выход из программы.\n";
