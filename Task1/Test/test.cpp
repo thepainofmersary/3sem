@@ -74,12 +74,13 @@ TEST(InitializerList_Queue_Success)
     EXPECT_EQ(q.toString(), "Очередь: 10 20 30 ");
 }
 
-TEST(Enqueue_FullQueue_Throws)
+TEST(Enqueue_FullQueueResize_Success)
 {
     Queue<int> q(2);
     q.enqueue(1);
     q.enqueue(2);
-    EXPECT_THROW(q.enqueue(3), std::overflow_error);
+    q.enqueue(3);
+    EXPECT_EQ(q.getCapacity(q), 4);
 }
 
 TEST(Dequeue_EmptyQueue_Throws)
@@ -92,4 +93,15 @@ TEST(Peek_EmptyQueue_Throws)
 {
     Queue<int> q(2);
     EXPECT_THROW(q.peek(), std::underflow_error);
+}
+
+TEST(Resize_Queue_Success)
+{
+    Queue<int> q(10);
+
+    EXPECT_EQ(q.getCapacity(q), 10);
+
+    q.resize();
+
+    EXPECT_EQ(q.getCapacity(q), 20);
 }

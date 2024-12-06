@@ -77,6 +77,16 @@ public:
     * @brief Функция вывода очереди
     */
     void printQueue();
+    /*
+    * @brief Метод для увеличения вместимости массива
+    */
+    void resize();
+    /*
+    * @brief Получение вместимости массива
+    * @param queue - очередь
+    * @return Вместимость массива
+    */
+    size_t getCapacity(const Queue& queue);
 };
 
 template <typename T>
@@ -97,7 +107,7 @@ void Queue<T>::enqueue(const T& element)
 {
     if (count == capacity)
     {
-        throw std::overflow_error("Очередь заполнена");
+        resize();
     }
     rear = rear + 1;
     data[rear] = element;
@@ -232,4 +242,26 @@ void Queue<T>::printQueue()
         std::cout << data[tempFront] << std::endl;
         tempFront += 1;
     }
+}
+
+template <typename T>
+void Queue<T>::resize()
+{
+    size_t newCapacity = capacity * 2;
+    T* newData = new T[newCapacity];
+    for (size_t i = 0; i < count; i++)
+    {
+        newData[i] = data[(front + i)];
+    }
+    delete[] data;
+    data = newData;
+    capacity = newCapacity;
+    front = 0;
+    rear = count - 1;
+}
+
+template <typename T>
+size_t Queue<T>::getCapacity(const Queue& queue)
+{
+    return queue.capacity;
 }
