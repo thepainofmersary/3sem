@@ -9,15 +9,19 @@ class Queue
 {
 private:
     T* data;
-    size_t capacity;
-    size_t front;
-    size_t rear;
-    size_t count;
+    int capacity;
+    int front;
+    int rear;
+    int count;
+    /*
+    * @brief Метод для увеличения вместимости массива
+    */
+    void resize();
 public:
     /*
     * @brief Конструктор по умолчанию
     */
-    Queue(size_t size);
+    Queue(int size);
     /*
     * @brief Деструктор
     */
@@ -51,7 +55,7 @@ public:
     * @param other - очередь
     * @return Ссылка на измененную очередь
     */
-    Queue<T>& operator=(const Queue<T>& other);
+    Queue<T>& operator=(Queue<T>& other);
     /*
     * @brief Оператор присваивания перемещением
     * @param other - очередь
@@ -74,23 +78,27 @@ public:
     */
     Queue(Queue&& other) noexcept;
     /*
-    * @brief Функция вывода очереди
+    * @brief Дружественная функция для перегрузки оператора вывода
+    * @param os - поток вывода
+    * @param queue - очередь
+    * @return поток вывода
     */
-    void printQueue();
-    /*
-    * @brief Метод для увеличения вместимости массива
-    */
-    void resize();
+    friend std::ostream& operator<<(std::ostream& os, const Queue& queue);
     /*
     * @brief Получение вместимости массива
     * @param queue - очередь
     * @return Вместимость массива
     */
     size_t getCapacity(const Queue& queue);
+    /*
+    * @brief Обмен параметрами между двумя очередями
+    * @param other - очередь
+    */
+    void swap(Queue& other) noexcept;
 };
 
 template <typename T>
-Queue<T>::Queue(size_t size)
+Queue<T>::Queue(int size)
     : capacity(size), front(0), rear(-1), count(0)
 {
     data = new T[capacity];
@@ -119,7 +127,7 @@ void Queue<T>::dequeue()
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::out_of_range("Очередь пуста");
     }
     T item = data[front];
     front = front + 1;
@@ -131,7 +139,7 @@ T Queue<T>::peek() const
 {
     if (isEmpty())
     {
-        throw std::underflow_error("Очередь пуста");
+        throw std::out_of_range("Очередь пуста");
     }
     return data[front];
 }
@@ -155,22 +163,9 @@ std::string Queue<T>::toString() const
 }
 
 template <typename T>
-Queue<T>& Queue<T>::operator=(const Queue<T>& other)
+Queue<T>& Queue<T>::operator=(Queue<T>& other)
 {
-    if (this == &other) return *this;
-    delete[] data;
-
-    capacity = other.capacity;
-    front = other.front;
-    rear = other.rear;
-    count = other.count;
-    data = new T[capacity];
-
-    for (size_t i = 0; i < count; ++i)
-    {
-        data[(front + i)] = other.data[(front + i)];
-    }
-
+    swap(other);
     return *this;
 }
 
@@ -228,23 +223,6 @@ Queue<T>::Queue(Queue&& other) noexcept
 }
 
 template <typename T>
-void Queue<T>::printQueue()
-{
-    if (isEmpty())
-    {
-        std::cout << "Очередь пуста!" << std::endl;
-        return;
-    }
-
-    size_t tempFront = front;
-    for (size_t i = 0; i < count; ++i)
-    {
-        std::cout << data[tempFront] << std::endl;
-        tempFront += 1;
-    }
-}
-
-template <typename T>
 void Queue<T>::resize()
 {
     size_t newCapacity = capacity * 2;
@@ -264,4 +242,21 @@ template <typename T>
 size_t Queue<T>::getCapacity(const Queue& queue)
 {
     return queue.capacity;
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const Queue<T>& queue)
+{
+    os << queue.toString();
+    return os;
+}
+
+template <typename T>
+void Queue<T>::swap(Queue& other) noexcept
+{
+    std::swap(data, other.data);
+    std::swap(capacity, other.capacity);
+    std::swap(count, other.count);
+    std::swap(front, other.front);
+    std::swap(rear, other.rear);
 }

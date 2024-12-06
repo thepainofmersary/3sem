@@ -17,6 +17,12 @@ TEST(Enqueue_Queue_Success)
     EXPECT_EQ(q.toString(), "Очередь: 10 ");
 }
 
+TEST(Rear_Queue_Success)
+{
+    Queue<int> q(0);
+    EXPECT_EQ(q.rear, -1);
+}
+
 TEST(Dequeue_Queue_Success)
 {
     Queue<int> q = { 1, 2, 3 };
@@ -87,24 +93,13 @@ TEST(Enqueue_FullQueueResize_Success)
 TEST(Dequeue_EmptyQueue_Throws)
 {
     Queue<int> q(2);
-    EXPECT_THROW(q.dequeue(), std::underflow_error);
+    EXPECT_THROW(q.dequeue(), std::out_of_range);
 }
 
 TEST(Peek_EmptyQueue_Throws)
 {
     Queue<int> q(2);
-    EXPECT_THROW(q.peek(), std::underflow_error);
-}
-
-TEST(Resize_Queue_Success)
-{
-    Queue<int> q(10);
-
-    EXPECT_EQ(q.getCapacity(q), 10);
-
-    q.resize();
-
-    EXPECT_EQ(q.getCapacity(q), 20);
+    EXPECT_THROW(q.peek(), std::out_of_range);
 }
 
 TEST(Enqueue_Queue_Double_Success)
