@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 
@@ -13,50 +13,50 @@ private:
     bool isOccupied;
     double price;
     /*
-     * @brief Конструктор комнаты.
-     * @param roomNumber Номер комнаты.
-     * @param capacity Вместимость комнаты.
-     * @param hasFridge Наличие холодильника.
-     * @param hasTV Наличие телевизора.
-     * @param hasBar Наличие мини-бара.
-     * @param price Цена за ночь.
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРјРЅР°С‚С‹.
+     * @param roomNumber РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @param capacity Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ РєРѕРјРЅР°С‚С‹.
+     * @param hasFridge РќР°Р»РёС‡РёРµ С…РѕР»РѕРґРёР»СЊРЅРёРєР°.
+     * @param hasTV РќР°Р»РёС‡РёРµ С‚РµР»РµРІРёР·РѕСЂР°.
+     * @param hasBar РќР°Р»РёС‡РёРµ РјРёРЅРё-Р±Р°СЂР°.
+     * @param price Р¦РµРЅР° Р·Р° РЅРѕС‡СЊ.
      */
     Room(int roomNumber, int capacity, bool hasFridge, bool hasTV, bool hasBar, double price);
 public:
     /*
-     * @brief Статический метод для создания объекта Room.
-     * @param roomNumber Номер комнаты.
-     * @param capacity Вместимость комнаты.
-     * @param hasFridge Наличие холодильника.
-     * @param hasTV Наличие телевизора.
-     * @param hasBar Наличие мини-бара.
-     * @param price Цена за ночь.
-     * @return Умный указатель на объект Room.
+     * @brief РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚Р° Room.
+     * @param roomNumber РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @param capacity Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ РєРѕРјРЅР°С‚С‹.
+     * @param hasFridge РќР°Р»РёС‡РёРµ С…РѕР»РѕРґРёР»СЊРЅРёРєР°.
+     * @param hasTV РќР°Р»РёС‡РёРµ С‚РµР»РµРІРёР·РѕСЂР°.
+     * @param hasBar РќР°Р»РёС‡РёРµ РјРёРЅРё-Р±Р°СЂР°.
+     * @param price Р¦РµРЅР° Р·Р° РЅРѕС‡СЊ.
+     * @return РЈРјРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ Room.
      */
     static std::shared_ptr<Room> create(int roomNumber, int capacity, bool hasFridge, bool hasTV, bool hasBar, double price);
     /*
-     * @brief Получить номер комнаты.
-     * @return Номер комнаты.
+     * @brief РџРѕР»СѓС‡РёС‚СЊ РЅРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @return РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
      */
     int getRoomNumber() const;
     /*
-     * @brief Проверить, занята ли комната.
-     * @return true, если комната занята; иначе false.
+     * @brief РџСЂРѕРІРµСЂРёС‚СЊ, Р·Р°РЅСЏС‚Р° Р»Рё РєРѕРјРЅР°С‚Р°.
+     * @return true, РµСЃР»Рё РєРѕРјРЅР°С‚Р° Р·Р°РЅСЏС‚Р°; РёРЅР°С‡Рµ false.
      */
     bool isRoomOccupied() const;
     /*
-     * @brief Установить статус занятости комнаты.
-     * @param isOccupied Статус занятости.
+     * @brief РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃС‚Р°С‚СѓСЃ Р·Р°РЅСЏС‚РѕСЃС‚Рё РєРѕРјРЅР°С‚С‹.
+     * @param isOccupied РЎС‚Р°С‚СѓСЃ Р·Р°РЅСЏС‚РѕСЃС‚Рё.
      */
     void setOccupied(bool isOccupied);
     /**
-     * @brief Получить цену за ночь.
-     * @return Цена комнаты.
+     * @brief РџРѕР»СѓС‡РёС‚СЊ С†РµРЅСѓ Р·Р° РЅРѕС‡СЊ.
+     * @return Р¦РµРЅР° РєРѕРјРЅР°С‚С‹.
      */
     double getPrice() const;
     /*
-     * @brief Показать информацию о комнате.
-     * Выводит на экран информацию о номере, вместимости, цене и удобствах комнаты.
+     * @brief РџРѕРєР°Р·Р°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРјРЅР°С‚Рµ.
+     * Р’С‹РІРѕРґРёС‚ РЅР° СЌРєСЂР°РЅ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РЅРѕРјРµСЂРµ, РІРјРµСЃС‚РёРјРѕСЃС‚Рё, С†РµРЅРµ Рё СѓРґРѕР±СЃС‚РІР°С… РєРѕРјРЅР°С‚С‹.
      */
     void showRoomInfo() const;
 };

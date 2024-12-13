@@ -1,4 +1,4 @@
-#include "Room.h"
+ï»¿#include "Room.h"
 
 Room::Room(int roomNumber, int capacity, bool hasFridge, bool hasTV, bool hasBar, double price)
     : roomNumber(roomNumber), capacity(capacity), hasFridge(hasFridge), hasTV(hasTV), hasBar(hasBar), isOccupied(false), price(price) {}
@@ -30,35 +30,35 @@ double Room::getPrice() const
 
 void Room::showRoomInfo() const
 {
-    std::cout << "Íîìåð: " << roomNumber << "\n"
-        << "Âìåñòèìîñòü: " << capacity << " ÷åëîâåê\n"
-        << "Öåíà: " << price << " ðóá.\n";
+    std::cout << "ÐÐ¾Ð¼ÐµÑ€: " << roomNumber << "\n"
+        << "Ð’Ð¼ÐµÑÑ‚Ð¸Ð¼Ð¾ÑÑ‚ÑŒ: " << capacity << " Ñ‡ÐµÐ»Ð¾Ð²ÐµÐº\n"
+        << "Ð¦ÐµÐ½Ð°: " << price << " Ñ€ÑƒÐ±.\n";
 
     if (hasFridge) 
     {
-        std::cout << "Õîëîäèëüíèê: Äà\n";
+        std::cout << "Ð¥Ð¾Ð»Ð¾Ð´Ð¸Ð»ÑŒÐ½Ð¸Ðº: Ð”Ð°\n";
     }
     else 
     {
-        std::cout << "Õîëîäèëüíèê: Íåò\n";
+        std::cout << "Ð¥Ð¾Ð»Ð¾Ð´Ð¸Ð»ÑŒÐ½Ð¸Ðº: ÐÐµÑ‚\n";
     }
 
     if (hasTV) 
     {
-        std::cout << "Òåëåâèçîð: Äà\n";
+        std::cout << "Ð¢ÐµÐ»ÐµÐ²Ð¸Ð·Ð¾Ñ€: Ð”Ð°\n";
     }
     else 
     {
-        std::cout << "Òåëåâèçîð: Íåò\n";
+        std::cout << "Ð¢ÐµÐ»ÐµÐ²Ð¸Ð·Ð¾Ñ€: ÐÐµÑ‚\n";
     }
 
     if (hasBar) 
     {
-        std::cout << "Ìèíè-áàð: Äà\n";
+        std::cout << "ÐœÐ¸Ð½Ð¸-Ð±Ð°Ñ€: Ð”Ð°\n";
     }
     else 
     {
-        std::cout << "Ìèíè-áàð: Íåò\n";
+        std::cout << "ÐœÐ¸Ð½Ð¸-Ð±Ð°Ñ€: ÐÐµÑ‚\n";
     }
 }
 

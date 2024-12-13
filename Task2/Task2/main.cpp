@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <memory>
 #include "../Domain/Hotel.h"
 #include "../Domain/Guest.h"
@@ -13,8 +13,8 @@ int main()
     hotel->addRoom(Room::create(101, 2, true, true, false, 5000));
     hotel->addRoom(Room::create(102, 3, true, false, true, 7000));
 
-    hotel->addGuest(Guest::create("Èâàí Èâàíîâ", true, 10));
-    hotel->addGuest(Guest::create("Ïåòð Ïåòðîâ", false, 0));
+    hotel->addGuest(Guest::create("Ð˜Ð²Ð°Ð½ Ð˜Ð²Ð°Ð½Ð¾Ð²", true, 10));
+    hotel->addGuest(Guest::create("ÐŸÐµÑ‚Ñ€ ÐŸÐµÑ‚Ñ€Ð¾Ð²", false, 0));
 
     hotel->showAvailableRooms();
 

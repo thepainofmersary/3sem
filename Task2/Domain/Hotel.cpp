@@ -1,4 +1,4 @@
-#include "Hotel.h"
+п»ї#include "Hotel.h"
 #include <iostream>
 
 Hotel::Hotel() {}
@@ -24,7 +24,7 @@ void Hotel::showDiscounts() const
     {
         if (guest->isRegularGuestFlag()) 
         {
-            std::cout << "Постоянный гость: " << guest->getName() << ", скидка: " << guest->getDiscount() << "%\n";
+            std::cout << "РџРѕСЃС‚РѕСЏРЅРЅС‹Р№ РіРѕСЃС‚СЊ: " << guest->getName() << ", СЃРєРёРґРєР°: " << guest->getDiscount() << "%\n";
         }
     }
 }
@@ -49,7 +49,7 @@ void Hotel::bookRoom(int roomNumber, const std::shared_ptr<Guest>& guest)
         {
             room->setOccupied(true);
             bookedRooms.emplace_back(room, guest);
-            std::cout << "Номер " << roomNumber << " забронирован для гостя " << guest->getName() << ".\n";
+            std::cout << "РќРѕРјРµСЂ " << roomNumber << " Р·Р°Р±СЂРѕРЅРёСЂРѕРІР°РЅ РґР»СЏ РіРѕСЃС‚СЏ " << guest->getName() << ".\n";
             break;
         }
     }
@@ -59,7 +59,7 @@ void Hotel::showOccupiedRooms() const
 {
     for (const auto& booked : bookedRooms) 
     {
-        std::cout << "Номер " << booked.first->getRoomNumber() << " забронирован гостем " << booked.second->getName() << ".\n";
+        std::cout << "РќРѕРјРµСЂ " << booked.first->getRoomNumber() << " Р·Р°Р±СЂРѕРЅРёСЂРѕРІР°РЅ РіРѕСЃС‚РµРј " << booked.second->getName() << ".\n";
     }
 }
 
@@ -69,7 +69,7 @@ void Hotel::showAvailableRooms() const
     {
         if (!room->isRoomOccupied()) 
         {
-            std::cout << "Номер " << room->getRoomNumber() << " доступен.\n";
+            std::cout << "РќРѕРјРµСЂ " << room->getRoomNumber() << " РґРѕСЃС‚СѓРїРµРЅ.\n";
         }
     }
 }
