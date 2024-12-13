@@ -17,10 +17,19 @@ TEST(Enqueue_Queue_Success)
     EXPECT_EQ(q.toString(), "Очередь: 10 ");
 }
 
+/*
 TEST(Rear_Queue_Success)
 {
     Queue<int> q(0);
     EXPECT_EQ(q.rear, -1);
+}
+*/
+
+TEST(NegativeElement_Queue_Success)
+{
+    Queue<int> q(5);
+    q.enqueue(-5);
+    EXPECT_EQ(q.toString(), "Очередь: -5 ");
 }
 
 TEST(Dequeue_Queue_Success)
