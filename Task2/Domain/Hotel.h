@@ -11,7 +11,6 @@ private:
     std::vector<std::shared_ptr<Room>> rooms;
     std::vector<std::shared_ptr<Guest>> guests;
     std::vector<std::pair<std::shared_ptr<Room>, std::shared_ptr<Guest>>> bookedRooms;
-
 public:
     /*
      * @brief Конструктор отеля.
