@@ -18,8 +18,8 @@ int main()
 
     hotel->showAvailableRooms();
 
-    hotel->bookRoom(101, hotel->getGuest(0));
-    hotel->bookRoom(102, hotel->getGuest(1));
+    hotel->bookRoom(101, { hotel->getGuest(0).get() });
+    hotel->bookRoom(102, { hotel->getGuest(1).get() });
 
     hotel->showOccupiedRooms();
 

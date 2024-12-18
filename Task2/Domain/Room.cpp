@@ -8,22 +8,22 @@ std::shared_ptr<Room> Room::create(int roomNumber, int capacity, bool hasFridge,
     return std::shared_ptr<Room>(new Room(roomNumber, capacity, hasFridge, hasTV, hasBar, price));
 }
 
-int Room::getRoomNumber() const 
+int Room::getRoomNumber() const
 {
     return roomNumber;
 }
 
-bool Room::isRoomOccupied() const 
+bool Room::isRoomOccupied() const
 {
     return isOccupied;
 }
 
-void Room::setOccupied(bool isOccupied) 
+void Room::setOccupied(bool isOccupied)
 {
     this->isOccupied = isOccupied;
 }
 
-double Room::getPrice() const 
+double Room::getPrice() const
 {
     return price;
 }
@@ -34,31 +34,21 @@ void Room::showRoomInfo() const
         << "Вместимость: " << capacity << " человек\n"
         << "Цена: " << price << " руб.\n";
 
-    if (hasFridge) 
-    {
-        std::cout << "Холодильник: Да\n";
-    }
-    else 
-    {
-        std::cout << "Холодильник: Нет\n";
-    }
-
-    if (hasTV) 
-    {
-        std::cout << "Телевизор: Да\n";
-    }
-    else 
-    {
-        std::cout << "Телевизор: Нет\n";
-    }
-
-    if (hasBar) 
-    {
-        std::cout << "Мини-бар: Да\n";
-    }
-    else 
-    {
-        std::cout << "Мини-бар: Нет\n";
-    }
+    std::cout << "Холодильник: " << (hasFridge ? "Да" : "Нет") << "\n";
+    std::cout << "Телевизор: " << (hasTV ? "Да" : "Нет") << "\n";
+    std::cout << "Мини-бар: " << (hasBar ? "Да" : "Нет") << "\n";
 }
 
+void Room::addGuest(Guest* guest)
+{
+    guests.push_back(guest);
+}
+
+void Room::listGuests() const
+{
+    std::cout << "Список гостей:\n";
+    for (const auto* guest : guests)
+    {
+        std::cout << "- " << guest->getName() << "\n";
+    }
+}
