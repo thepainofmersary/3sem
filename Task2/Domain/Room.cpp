@@ -39,16 +39,28 @@ void Room::showRoomInfo() const
     std::cout << "Мини-бар: " << (hasBar ? "Да" : "Нет") << "\n";
 }
 
-void Room::addGuest(Guest* guest)
+bool Room::addGuest(Guest* guest)
 {
-    guests.push_back(guest);
+    if (guests.size() < capacity)
+    {
+        guests.push_back(guest);
+        return true;
+    }
+    return false;
 }
 
 void Room::listGuests() const
 {
-    std::cout << "Список гостей:\n";
-    for (const auto* guest : guests)
+    if (guests.empty())
     {
-        std::cout << "- " << guest->getName() << "\n";
+        std::cout << "В комнате нет гостей.\n";
+    }
+    else
+    {
+        std::cout << "Гости в комнате " << roomNumber << ":\n";
+        for (auto* guest : guests)
+        {
+            std::cout << " - " << guest->getName() << "\n";
+        }
     }
 }

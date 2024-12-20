@@ -24,7 +24,8 @@ void Hotel::showDiscounts() const
     {
         if (guest->isRegularGuestFlag())
         {
-            std::cout << "Постоянный гость: " << guest->getName() << ", скидка: " << guest->getDiscount() << "%\n";
+            std::cout << "Постоянный гость: " << guest->getName()
+                << ", скидка: " << guest->getDiscount() << "%\n";
         }
     }
 }
@@ -41,21 +42,26 @@ void Hotel::showRoomInfo(int roomNumber) const
     }
 }
 
-void Hotel::bookRoom(int roomNumber, const std::vector<Guest*>& bookingGuests)
+void Hotel::bookRoom(int roomNumber, Guest* guest)
 {
     for (auto& room : rooms)
     {
         if (room->getRoomNumber() == roomNumber && !room->isRoomOccupied())
         {
-            room->setOccupied(true);
-            for (auto* guest : bookingGuests)
+            if (room->addGuest(guest))
             {
-                room->addGuest(guest);
+                bookedRooms.emplace_back(room, guest);  
+                std::cout << "Гость " << guest->getName() << " забронирован в комнате " << roomNumber << ".\n";
+                return;
             }
-            std::cout << "Номер " << roomNumber << " забронирован для гостей.\n";
-            break;
+            else
+            {
+                std::cout << "Комната " << roomNumber << " не может принять больше гостей.\n";
+                return;
+            }
         }
     }
+    std::cout << "Комната " << roomNumber << " не найдена или занята.\n";
 }
 
 void Hotel::showOccupiedRooms() const
@@ -79,4 +85,17 @@ void Hotel::showAvailableRooms() const
             std::cout << "Номер " << room->getRoomNumber() << " доступен.\n";
         }
     }
+}
+
+void Hotel::showRoomGuests(int roomNumber) const
+{
+    for (const auto& room : rooms)
+    {
+        if (room->getRoomNumber() == roomNumber)
+        {
+            room->listGuests();  
+            return;
+        }
+    }
+    std::cout << "Комната с номером " << roomNumber << " не найдена.\n";
 }
