@@ -6,95 +6,49 @@ Hotel::Hotel() {}
 void Hotel::addRoom(const std::shared_ptr<Room>& room)
 {
     rooms.emplace_back(room);
+    room->setHotel(shared_from_this());
 }
 
-void Hotel::addGuest(const std::shared_ptr<Guest>& guest)
+void Hotel::showAvailableRooms() const
 {
-    guests.emplace_back(guest);
-}
-
-std::shared_ptr<Guest> Hotel::getGuest(int index) const
-{
-    return guests.at(index);
-}
-
-void Hotel::showDiscounts() const
-{
-    for (const auto& guest : guests)
+    for (const auto& weakRoom : rooms)
     {
-        if (guest->isRegularGuestFlag())
+        if (auto room = weakRoom.lock())
         {
-            std::cout << "Постоянный гость: " << guest->getName()
-                << ", скидка: " << guest->getDiscount() << "%\n";
+            if (!room->isRoomOccupied())
+            {
+                std::cout << "Номер " << room->getRoomNumber() << " доступен.\n";
+            }
+        }
+    }
+}
+
+void Hotel::showOccupiedRooms() const
+{
+    for (const auto& weakRoom : rooms)
+    {
+        if (auto room = weakRoom.lock())
+        {
+            if (room->isRoomOccupied())
+            {
+                std::cout << "Номер " << room->getRoomNumber() << " занят.\n";
+                room->listGuests();
+            }
         }
     }
 }
 
 void Hotel::showRoomInfo(int roomNumber) const
 {
-    for (const auto& room : rooms)
+    for (const auto& weakRoom : rooms)
     {
-        if (room->getRoomNumber() == roomNumber)
+        if (auto room = weakRoom.lock())
         {
-            room->showRoomInfo();
-            break;
-        }
-    }
-}
-
-void Hotel::bookRoom(int roomNumber, Guest* guest)
-{
-    for (auto& room : rooms)
-    {
-        if (room->getRoomNumber() == roomNumber && !room->isRoomOccupied())
-        {
-            if (room->addGuest(guest))
+            if (room->getRoomNumber() == roomNumber)
             {
-                bookedRooms.emplace_back(room, guest);  
-                std::cout << "Гость " << guest->getName() << " забронирован в комнате " << roomNumber << ".\n";
+                room->showRoomInfo();
                 return;
             }
-            else
-            {
-                std::cout << "Комната " << roomNumber << " не может принять больше гостей.\n";
-                return;
-            }
-        }
-    }
-    std::cout << "Комната " << roomNumber << " не найдена или занята.\n";
-}
-
-void Hotel::showOccupiedRooms() const
-{
-    for (const auto& room : rooms)
-    {
-        if (room->isRoomOccupied())
-        {
-            std::cout << "Номер " << room->getRoomNumber() << " занят.\n";
-            room->listGuests();
-        }
-    }
-}
-
-void Hotel::showAvailableRooms() const
-{
-    for (const auto& room : rooms)
-    {
-        if (!room->isRoomOccupied())
-        {
-            std::cout << "Номер " << room->getRoomNumber() << " доступен.\n";
-        }
-    }
-}
-
-void Hotel::showRoomGuests(int roomNumber) const
-{
-    for (const auto& room : rooms)
-    {
-        if (room->getRoomNumber() == roomNumber)
-        {
-            room->listGuests();  
-            return;
         }
     }
     std::cout << "Комната с номером " << roomNumber << " не найдена.\n";
