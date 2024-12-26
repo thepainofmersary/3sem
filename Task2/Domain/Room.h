@@ -29,9 +29,8 @@ private:
      */
     Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price);
 
+    std::shared_ptr<Hotel> hotel;
 public:
-    std::weak_ptr<Hotel> hotel;
-
     /**
      * @brief Статический метод для создания объекта Room.
      * @param roomNumber Номер комнаты.
