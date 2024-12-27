@@ -1,4 +1,4 @@
-﻿#include "Room.h"
+#include "Room.h"
 
 Room::Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price)
     : roomNumber(roomNumber), hasFridge(hasFridge), hasTV(hasTV), hasBar(hasBar), isOccupied(false), price(price) {}

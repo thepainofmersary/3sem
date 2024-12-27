@@ -18,21 +18,21 @@ int main()
     hotel->addRoom(room2);
     hotel->addRoom(room3);
 
-    auto guest1 = Guest::create("Èâàí Èâàíîâ", true, 10.0, room1);
-    auto guest2 = Guest::create("Ìàðèÿ Ïåòðîâà", false, 0.0, room2);
-    auto guest3 = Guest::create("Àëåêñåé Ñìèðíîâ", true, 15.0, room3);
+    auto guest1 = Guest::create("Ð˜Ð²Ð°Ð½ Ð˜Ð²Ð°Ð½Ð¾Ð²", true, 10.0, room1);
+    auto guest2 = Guest::create("ÐœÐ°Ñ€Ð¸Ñ ÐŸÐµÑ‚Ñ€Ð¾Ð²Ð°", false, 0.0, room2);
+    auto guest3 = Guest::create("ÐÐ»ÐµÐºÑÐµÐ¹ Ð¡Ð¼Ð¸Ñ€Ð½Ð¾Ð²", true, 15.0, room3);
 
     room1->addGuest(guest1);
     room2->addGuest(guest2);
     room3->addGuest(guest3);
 
-    std::cout << "Äîñòóïíûå êîìíàòû:\n";
+    std::cout << "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð½Ð°Ñ‚Ñ‹:\n";
     hotel->showAvailableRooms();
 
-    std::cout << "\nÇàíÿòûå êîìíàòû:\n";
+    std::cout << "\nÐ—Ð°Ð½ÑÑ‚Ñ‹Ðµ ÐºÐ¾Ð¼Ð½Ð°Ñ‚Ñ‹:\n";
     hotel->showOccupiedRooms();
 
-    std::cout << "\nÈíôîðìàöèÿ î êîìíàòå 102:\n";
+    std::cout << "\nÐ˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ ÐºÐ¾Ð¼Ð½Ð°Ñ‚Ðµ 102:\n";
     hotel->showRoomInfo(102);
 
     return 0;

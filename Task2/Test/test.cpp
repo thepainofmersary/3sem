@@ -50,7 +50,7 @@ TEST(AddRoom_OccupiedRooms)
 TEST(Room_Guest_SharedPtr)
 {
     auto room1 = Room::create(101, true, true, false, 3000.0);
-    auto guest1 = Guest::create("Иван Иванов", true, 10.0, room1);
+    auto guest1 = Guest::create("           ", true, 10.0, room1);
 
     room1->addGuest(guest1);
 

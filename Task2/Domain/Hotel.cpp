@@ -1,4 +1,4 @@
-﻿#include "Hotel.h"
+#include "Hotel.h"
 #include <iostream>
 
 Hotel::Hotel() {}
