@@ -4,7 +4,7 @@ Room::Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price
     : roomNumber(roomNumber), hasFridge(hasFridge), hasTV(hasTV), hasBar(hasBar), isOccupied(false), price(price) {}
 
 std::shared_ptr<Room> Room::create(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price)
-{
+{ 
     return std::shared_ptr<Room>(new Room(roomNumber, hasFridge, hasTV, hasBar, price));
 }
 
