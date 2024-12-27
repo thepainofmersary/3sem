@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <string>
 #include <memory>
@@ -14,25 +14,25 @@ private:
     std::shared_ptr<Room> room; 
 
     /**
-     * @brief Конструктор гостя.
-     * @param name Имя гостя.
-     * @param isRegularGuest Флаг, является ли гость постоянным.
-     * @param discount Скидка для постоянного гостя.
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РіРѕСЃС‚СЏ.
+     * @param name РРјСЏ РіРѕСЃС‚СЏ.
+     * @param isRegularGuest Р¤Р»Р°Рі, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РіРѕСЃС‚СЊ РїРѕСЃС‚РѕСЏРЅРЅС‹Рј.
+     * @param discount РЎРєРёРґРєР° РґР»СЏ РїРѕСЃС‚РѕСЏРЅРЅРѕРіРѕ РіРѕСЃС‚СЏ.
      */
     Guest(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room);
 public:
     /**
-     * @brief Статический метод для создания объекта Guest.
-     * @param name Имя гостя.
-     * @param isRegularGuest Флаг, является ли гость постоянным.
-     * @param discount Скидка для постоянного гостя.
-     * @return Умный указатель на объект Guest.
+     * @brief РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚Р° Guest.
+     * @param name РРјСЏ РіРѕСЃС‚СЏ.
+     * @param isRegularGuest Р¤Р»Р°Рі, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РіРѕСЃС‚СЊ РїРѕСЃС‚РѕСЏРЅРЅС‹Рј.
+     * @param discount РЎРєРёРґРєР° РґР»СЏ РїРѕСЃС‚РѕСЏРЅРЅРѕРіРѕ РіРѕСЃС‚СЏ.
+     * @return РЈРјРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ Guest.
      */
     static std::shared_ptr<Guest> create(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room);
 
     /**
-     * @brief Получить имя гостя.
-     * @return Имя гостя.
+     * @brief РџРѕР»СѓС‡РёС‚СЊ РёРјСЏ РіРѕСЃС‚СЏ.
+     * @return РРјСЏ РіРѕСЃС‚СЏ.
      */
     std::string getName() const;
 

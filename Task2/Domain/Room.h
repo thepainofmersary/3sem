@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 #include <vector>
@@ -20,12 +20,12 @@ private:
     std::vector<std::weak_ptr<Guest>> guests; 
 
     /**
-     * @brief Конструктор комнаты.
-     * @param roomNumber Номер комнаты.
-     * @param hasFridge Наличие холодильника.
-     * @param hasTV Наличие телевизора.
-     * @param hasBar Наличие мини-бара.
-     * @param price Цена за ночь.
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРјРЅР°С‚С‹.
+     * @param roomNumber РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @param hasFridge РќР°Р»РёС‡РёРµ С…РѕР»РѕРґРёР»СЊРЅРёРєР°.
+     * @param hasTV РќР°Р»РёС‡РёРµ С‚РµР»РµРІРёР·РѕСЂР°.
+     * @param hasBar РќР°Р»РёС‡РёРµ РјРёРЅРё-Р±Р°СЂР°.
+     * @param price Р¦РµРЅР° Р·Р° РЅРѕС‡СЊ.
      */
     Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price);
 
@@ -33,60 +33,60 @@ private:
 
 public:
     /**
-     * @brief Статический метод для создания объекта Room.
-     * @param roomNumber Номер комнаты.
-     * @param hasFridge Наличие холодильника.
-     * @param hasTV Наличие телевизора.
-     * @param hasBar Наличие мини-бара.
-     * @param price Цена за ночь.
-     * @return Умный указатель на объект Room.
+     * @brief РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚Р° Room.
+     * @param roomNumber РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @param hasFridge РќР°Р»РёС‡РёРµ С…РѕР»РѕРґРёР»СЊРЅРёРєР°.
+     * @param hasTV РќР°Р»РёС‡РёРµ С‚РµР»РµРІРёР·РѕСЂР°.
+     * @param hasBar РќР°Р»РёС‡РёРµ РјРёРЅРё-Р±Р°СЂР°.
+     * @param price Р¦РµРЅР° Р·Р° РЅРѕС‡СЊ.
+     * @return РЈРјРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ Room.
      */
     static std::shared_ptr<Room> create(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price);
 
     /**
-     * @brief Получить номер комнаты.
-     * @return Номер комнаты.
+     * @brief РџРѕР»СѓС‡РёС‚СЊ РЅРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
+     * @return РќРѕРјРµСЂ РєРѕРјРЅР°С‚С‹.
      */
     int getRoomNumber() const;
 
     /**
-     * @brief Проверить, занята ли комната.
-     * @return true, если комната занята; иначе false.
+     * @brief РџСЂРѕРІРµСЂРёС‚СЊ, Р·Р°РЅСЏС‚Р° Р»Рё РєРѕРјРЅР°С‚Р°.
+     * @return true, РµСЃР»Рё РєРѕРјРЅР°С‚Р° Р·Р°РЅСЏС‚Р°; РёРЅР°С‡Рµ false.
      */
     bool isRoomOccupied() const;
 
     /**
-     * @brief Установить статус занятости комнаты.
-     * @param isOccupied Новый статус занятости комнаты.
+     * @brief РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃС‚Р°С‚СѓСЃ Р·Р°РЅСЏС‚РѕСЃС‚Рё РєРѕРјРЅР°С‚С‹.
+     * @param isOccupied РќРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ Р·Р°РЅСЏС‚РѕСЃС‚Рё РєРѕРјРЅР°С‚С‹.
      */
     void setOccupied(bool isOccupied);
 
     /**
-     * @brief Получить цену за ночь проживания в комнате.
-     * @return Цена за ночь.
+     * @brief РџРѕР»СѓС‡РёС‚СЊ С†РµРЅСѓ Р·Р° РЅРѕС‡СЊ РїСЂРѕР¶РёРІР°РЅРёСЏ РІ РєРѕРјРЅР°С‚Рµ.
+     * @return Р¦РµРЅР° Р·Р° РЅРѕС‡СЊ.
      */
     double getPrice() const;
 
     /**
-     * @brief Вывести на экран информацию о комнате.
-     * Включает номер комнаты, цену и наличие удобств.
+     * @brief Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРјРЅР°С‚Рµ.
+     * Р’РєР»СЋС‡Р°РµС‚ РЅРѕРјРµСЂ РєРѕРјРЅР°С‚С‹, С†РµРЅСѓ Рё РЅР°Р»РёС‡РёРµ СѓРґРѕР±СЃС‚РІ.
      */
     void showRoomInfo() const;
 
     /**
-     * @brief Добавить гостя в комнату.
-     * @param guest Умный указатель на объект Guest.
+     * @brief Р”РѕР±Р°РІРёС‚СЊ РіРѕСЃС‚СЏ РІ РєРѕРјРЅР°С‚Сѓ.
+     * @param guest РЈРјРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ Guest.
      */
     void addGuest(const std::shared_ptr<Guest>& guest);
 
     /**
-     * @brief Установить отель, к которому принадлежит комната.
-     * @param hotel Умный указатель на объект Hotel.
+     * @brief РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РѕС‚РµР»СЊ, Рє РєРѕС‚РѕСЂРѕРјСѓ РїСЂРёРЅР°РґР»РµР¶РёС‚ РєРѕРјРЅР°С‚Р°.
+     * @param hotel РЈРјРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ Hotel.
      */
     void setHotel(const std::shared_ptr<Hotel>& hotel);
 
     /**
-     * @brief Вывести список гостей в комнате.
+     * @brief Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РіРѕСЃС‚РµР№ РІ РєРѕРјРЅР°С‚Рµ.
      */
     void listGuests() const;
 };

@@ -1,4 +1,4 @@
-#include "Room.h"
+ï»¿#include "Room.h"
 
 Room::Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price)
     : roomNumber(roomNumber), hasFridge(hasFridge), hasTV(hasTV), hasBar(hasBar), isOccupied(false), price(price) {}
@@ -30,11 +30,11 @@ double Room::getPrice() const
 
 void Room::showRoomInfo() const
 {
-    std::cout << "Íîìåð: " << roomNumber << "\n"
-        << "Öåíà: " << price << " ðóá.\n"
-        << "Õîëîäèëüíèê: " << (hasFridge ? "Äà" : "Íåò") << "\n"
-        << "Òåëåâèçîð: " << (hasTV ? "Äà" : "Íåò") << "\n"
-        << "Ìèíè-áàð: " << (hasBar ? "Äà" : "Íåò") << "\n";
+    std::cout << "ÐÐ¾Ð¼ÐµÑ€: " << roomNumber << "\n"
+        << "Ð¦ÐµÐ½Ð°: " << price << " Ñ€ÑƒÐ±.\n"
+        << "Ð¥Ð¾Ð»Ð¾Ð´Ð¸Ð»ÑŒÐ½Ð¸Ðº: " << (hasFridge ? "Ð”Ð°" : "ÐÐµÑ‚") << "\n"
+        << "Ð¢ÐµÐ»ÐµÐ²Ð¸Ð·Ð¾Ñ€: " << (hasTV ? "Ð”Ð°" : "ÐÐµÑ‚") << "\n"
+        << "ÐœÐ¸Ð½Ð¸-Ð±Ð°Ñ€: " << (hasBar ? "Ð”Ð°" : "ÐÐµÑ‚") << "\n";
 }
 
 void Room::addGuest(const std::shared_ptr<Guest>& guest)

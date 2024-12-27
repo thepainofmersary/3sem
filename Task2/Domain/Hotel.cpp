@@ -1,4 +1,4 @@
-#include "Hotel.h"
+п»ї#include "Hotel.h"
 #include <iostream>
 
 Hotel::Hotel() {}
@@ -17,7 +17,7 @@ void Hotel::showAvailableRooms() const
         {
             if (!room->isRoomOccupied())
             {
-                std::cout << "Номер " << room->getRoomNumber() << " доступен.\n";
+                std::cout << "РќРѕРјРµСЂ " << room->getRoomNumber() << " РґРѕСЃС‚СѓРїРµРЅ.\n";
             }
         }
     }
@@ -31,7 +31,7 @@ void Hotel::showOccupiedRooms() const
         {
             if (room->isRoomOccupied())
             {
-                std::cout << "Номер " << room->getRoomNumber() << " занят.\n";
+                std::cout << "РќРѕРјРµСЂ " << room->getRoomNumber() << " Р·Р°РЅСЏС‚.\n";
             }
         }
     }
@@ -50,5 +50,5 @@ void Hotel::showRoomInfo(int roomNumber) const
             }
         }
     }
-    std::cout << "Комната с номером " << roomNumber << " не найдена.\n";
+    std::cout << "РљРѕРјРЅР°С‚Р° СЃ РЅРѕРјРµСЂРѕРј " << roomNumber << " РЅРµ РЅР°Р№РґРµРЅР°.\n";
 }
