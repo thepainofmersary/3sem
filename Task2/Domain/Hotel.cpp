@@ -32,7 +32,6 @@ void Hotel::showOccupiedRooms() const
             if (room->isRoomOccupied())
             {
                 std::cout << "Номер " << room->getRoomNumber() << " занят.\n";
-                room->listGuests();
             }
         }
     }

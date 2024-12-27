@@ -18,9 +18,9 @@ int main()
     hotel->addRoom(room2);
     hotel->addRoom(room3);
 
-    auto guest1 = Guest::create("Иван Иванов", true, 10.0);
-    auto guest2 = Guest::create("Мария Петрова", false, 0.0);
-    auto guest3 = Guest::create("Алексей Смирнов", true, 15.0);
+    auto guest1 = Guest::create("Иван Иванов", true, 10.0, room1);
+    auto guest2 = Guest::create("Мария Петрова", false, 0.0, room2);
+    auto guest3 = Guest::create("Алексей Смирнов", true, 15.0, room3);
 
     room1->addGuest(guest1);
     room2->addGuest(guest2);

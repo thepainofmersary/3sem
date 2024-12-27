@@ -19,7 +19,7 @@ private:
      * @param isRegularGuest Флаг, является ли гость постоянным.
      * @param discount Скидка для постоянного гостя.
      */
-    Guest(const std::string& name, bool isRegularGuest, double discount);
+    Guest(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room);
 public:
     /**
      * @brief Статический метод для создания объекта Guest.
@@ -28,7 +28,7 @@ public:
      * @param discount Скидка для постоянного гостя.
      * @return Умный указатель на объект Guest.
      */
-    static std::shared_ptr<Guest> create(const std::string& name, bool isRegularGuest, double discount);
+    static std::shared_ptr<Guest> create(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room);
 
     /**
      * @brief Получить имя гостя.
@@ -36,21 +36,5 @@ public:
      */
     std::string getName() const;
 
-    /**
-     * @brief Проверить, является ли гость постоянным.
-     * @return true, если гость постоянный; иначе false.
-     */
-    bool isRegularGuestFlag() const;
-
-    /**
-     * @brief Получить скидку для постоянного гостя.
-     * @return Скидка.
-     */
-    double getDiscount() const;
-
-    /**
-     * @brief Установить комнату гостя.
-     * @param room Умный указатель на объект Room.
-     */
-    void setRoom(const std::shared_ptr<Room>& room);
+    std::shared_ptr<Room> getRoom() const;
 };

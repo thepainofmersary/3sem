@@ -17,7 +17,7 @@ private:
     bool hasBar; 
     bool isOccupied; 
     double price; 
-    std::vector<std::shared_ptr<Guest>> guests; 
+    std::vector<std::weak_ptr<Guest>> guests; 
 
     /**
      * @brief Конструктор комнаты.
