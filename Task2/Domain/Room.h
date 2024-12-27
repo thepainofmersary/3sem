@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <vector>
@@ -11,13 +11,13 @@ class Hotel;
 class Room : public std::enable_shared_from_this<Room>
 {
 private:
-    int roomNumber; 
-    bool hasFridge; 
-    bool hasTV; 
-    bool hasBar; 
-    bool isOccupied; 
-    double price; 
-    std::vector<std::weak_ptr<Guest>> guests; 
+    int roomNumber;
+    bool hasFridge;
+    bool hasTV;
+    bool hasBar;
+    bool isOccupied;
+    double price;
+    std::vector<std::weak_ptr<Guest>> guests;
 
     /**
      * @brief Конструктор комнаты.
@@ -78,15 +78,4 @@ public:
      * @param guest Умный указатель на объект Guest.
      */
     void addGuest(const std::shared_ptr<Guest>& guest);
-
-    /**
-     * @brief Установить отель, к которому принадлежит комната.
-     * @param hotel Умный указатель на объект Hotel.
-     */
-    void setHotel(const std::shared_ptr<Hotel>& hotel);
-
-    /**
-     * @brief Вывести список гостей в комнате.
-     */
-    void listGuests() const;
 };

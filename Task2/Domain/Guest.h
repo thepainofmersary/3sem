@@ -1,17 +1,17 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 #include <memory>
 
-class Room; 
+class Room;
 
 class Guest
 {
 private:
-    std::string name; 
-    bool isRegularGuest; 
-    double discount; 
-    std::shared_ptr<Room> room; 
+    std::string name;
+    bool isRegularGuest;
+    double discount;
+    std::shared_ptr<Room> room;
 
     /**
      * @brief Конструктор гостя.
@@ -37,4 +37,10 @@ public:
     std::string getName() const;
 
     std::shared_ptr<Room> getRoom() const;
+
+    /*
+    * @brief Установить комнату гостя.
+    * @param room Умный указатель на объект Room.
+    */
+    void setRoom(const std::shared_ptr<Room>& room);
 };

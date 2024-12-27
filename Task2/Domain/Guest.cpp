@@ -1,4 +1,4 @@
-#include "Guest.h"
+﻿﻿#include "Guest.h"
 #include "Room.h"
 #include <memory>
 
@@ -18,4 +18,9 @@ std::string Guest::getName() const
 std::shared_ptr<Room> Guest::getRoom() const
 {
     return room;
+}
+
+void Guest::setRoom(const std::shared_ptr<Room>& room)
+{
+    this->room = room;
 }
