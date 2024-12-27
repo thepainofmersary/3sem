@@ -37,4 +37,10 @@ public:
     std::string getName() const;
 
     std::shared_ptr<Room> getRoom() const;
+
+    /*
+    * @brief Установить комнату гостя.
+    * @param room Умный указатель на объект Room.
+    */
+    void setRoom(const std::shared_ptr<Room>&room);
 };

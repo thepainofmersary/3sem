@@ -19,3 +19,8 @@ std::shared_ptr<Room> Guest::getRoom() const
 {
     return room;
 }
+
+void Guest::setRoom(const std::shared_ptr<Room>& room)
+{
+    this->room = room;
+}

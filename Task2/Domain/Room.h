@@ -78,15 +78,4 @@ public:
      * @param guest Умный указатель на объект Guest.
      */
     void addGuest(const std::shared_ptr<Guest>& guest);
-
-    /**
-     * @brief Установить отель, к которому принадлежит комната.
-     * @param hotel Умный указатель на объект Hotel.
-     */
-    void setHotel(const std::shared_ptr<Hotel>& hotel);
-
-    /**
-     * @brief Вывести список гостей в комнате.
-     */
-    void listGuests() const;
 };

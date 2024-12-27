@@ -40,10 +40,6 @@ void Room::showRoomInfo() const
 void Room::addGuest(const std::shared_ptr<Guest>& guest)
 {
     guests.push_back(guest);
+    guest->setRoom(shared_from_this());
     isOccupied = true;
-}
-
-void Room::setHotel(const std::shared_ptr<Hotel>& hotel)
-{
-    this->hotel = hotel;
 }
