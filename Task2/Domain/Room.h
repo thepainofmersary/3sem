@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -10,14 +10,14 @@ class Hotel;
 
 class Room : public std::enable_shared_from_this<Room>
 {
-private:    
+private:
     int roomNumber; 
     bool hasFridge; 
     bool hasTV; 
     bool hasBar; 
     bool isOccupied; 
     double price; 
-    std::vector<std::shared_ptr<Guest>> guests; 
+    std::vector<std::weak_ptr<Guest>> guests; 
 
     /**
      * @brief Конструктор комнаты.
@@ -30,6 +30,7 @@ private:
     Room(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price);
 
     std::shared_ptr<Hotel> hotel;
+
 public:
     /**
      * @brief Статический метод для создания объекта Room.
@@ -43,7 +44,7 @@ public:
     static std::shared_ptr<Room> create(int roomNumber, bool hasFridge, bool hasTV, bool hasBar, double price);
 
     /**
-     * @brief Получить номер комнаты.   
+     * @brief Получить номер комнаты.
      * @return Номер комнаты.
      */
     int getRoomNumber() const;

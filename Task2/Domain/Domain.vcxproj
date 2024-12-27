@@ -18,20 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Guest.h" />
-    <ClInclude Include="Hotel.h" />
-    <ClInclude Include="Room.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Guest.cpp" />
-    <ClCompile Include="Hotel.cpp" />
-    <ClCompile Include="Room.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8110f0ca-1bd5-4d9d-9cb0-afc191cada2f}</ProjectGuid>
+    <ProjectGuid>{1e1e6b33-7de7-41cc-a8cb-f37ccd4eccd4}</ProjectGuid>
     <RootNamespace>Domain</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -128,7 +118,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +126,16 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Guest.h" />
+    <ClInclude Include="Hotel.h" />
+    <ClInclude Include="Room.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Guest.cpp" />
+    <ClCompile Include="Hotel.cpp" />
+    <ClCompile Include="Room.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -2,12 +2,12 @@
 #include "Room.h"
 #include <memory>
 
-Guest::Guest(const std::string& name, bool isRegularGuest, double discount)
-    : name(name), isRegularGuest(isRegularGuest), discount(discount) {}
+Guest::Guest(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room)
+    : name(name), isRegularGuest(isRegularGuest), discount(discount), room(room) {}
 
-std::shared_ptr<Guest> Guest::create(const std::string& name, bool isRegularGuest, double discount)
+std::shared_ptr<Guest> Guest::create(const std::string& name, bool isRegularGuest, double discount, const std::shared_ptr<Room>& room)
 {
-    return std::shared_ptr<Guest>(new Guest(name, isRegularGuest, discount));
+    return std::shared_ptr<Guest>(new Guest(name, isRegularGuest, discount, room));
 }
 
 std::string Guest::getName() const
@@ -15,17 +15,7 @@ std::string Guest::getName() const
     return name;
 }
 
-bool Guest::isRegularGuestFlag() const
+std::shared_ptr<Room> Guest::getRoom() const
 {
-    return isRegularGuest;
-}
-
-double Guest::getDiscount() const
-{
-    return discount;
-}
-
-void Guest::setRoom(const std::shared_ptr<Room>& room)
-{
-    this->room = room;
+    return room;
 }

@@ -1,4 +1,4 @@
-﻿#include "Hotel.h"
+#include "Hotel.h"
 #include <iostream>
 
 Hotel::Hotel() {}
@@ -32,7 +32,6 @@ void Hotel::showOccupiedRooms() const
             if (room->isRoomOccupied())
             {
                 std::cout << "Номер " << room->getRoomNumber() << " занят.\n";
-                room->listGuests();
             }
         }
     }
