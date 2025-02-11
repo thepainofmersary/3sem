@@ -1,14 +1,21 @@
 #include "Exercise.h"
+#include <memory>
 
-Exercise::Exercise(int rows, int cols)
-    : matrix_data(rows, cols) {}
-
-void Exercise::set_matrix(const Matrix& matrix) 
+Exercise::Exercise(int rows, int cols, std::unique_ptr<Generator> generator, std::ostream& out)
+    : out(out)
 {
-    matrix_data = matrix;
+    matrix = std::make_unique<Matrix>(rows, cols);
+    matrix->fill(generator.get());
 }
 
-const Matrix& Exercise::get_result() const
+void Exercise::Run()
 {
-    return matrix_data;
+    Task1();
+    Task2();
 }
+
+
+//const Matrix& Exercise::get_result() const
+//{
+//    return matrix_data;
+//}

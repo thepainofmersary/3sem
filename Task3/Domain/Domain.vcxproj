@@ -131,18 +131,16 @@
     <ClInclude Include="Generator.h" />
     <ClInclude Include="IStreamGenerator.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MyExercise.h" />
     <ClInclude Include="RandomGenerator.h" />
-    <ClInclude Include="Task1.h" />
-    <ClInclude Include="Task2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Exercise.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="IStreamGenerator.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="MyExercise.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
-    <ClCompile Include="Task1.cpp" />
-    <ClCompile Include="Task2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

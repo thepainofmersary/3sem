@@ -38,8 +38,9 @@ public:
 
     /**
      * @brief Печатает матрицу на экран.
+     * @brief out поток вывода
      */
-    void print() const;
+    void print(std::ostream& out) const;
 
     /**
      * @brief Возвращает строку матрицы по индексу.
@@ -81,4 +82,12 @@ public:
      * @param index Индекс строки.
      */
     void insert_row(int index, const std::vector<int>& row);
+
+    /**
+    * @brief Переопределяет оператор вывода
+    * @param os - поток вывода
+    * @param matrix - матрица
+    * @return поток вывода
+    */
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
 };

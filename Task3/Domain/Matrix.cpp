@@ -1,7 +1,13 @@
-#include "Matrix.h"
+﻿#include "Matrix.h"
 
 Matrix::Matrix(int rows, int cols)
-    : rows(rows), cols(cols), matrix_data(rows, std::vector<int>(cols)) {}
+    : rows(rows), cols(cols), matrix_data(rows, std::vector<int>(cols)) 
+{
+    if (rows <= 0 || cols <= 0)
+    {
+        throw std::invalid_argument("Размеры матрицы должны быть положительными числами.");
+    }
+}
 
 void Matrix::fill(Generator* gen) 
 {
@@ -14,15 +20,15 @@ void Matrix::fill(Generator* gen)
     }
 }
 
-void Matrix::print() const 
+void Matrix::print(std::ostream& out) const 
 {
     for (const auto& row : matrix_data)
     {
         for (const auto& elem : row) 
         {
-            std::cout << elem << " ";
+            out << elem << " ";
         }
-        std::cout << "\n";
+        out << "\n";
     }
 }
 
@@ -56,3 +62,16 @@ void Matrix::insert_row(int index, const std::vector<int>& row)
     matrix_data.insert(matrix_data.begin() + index, row);
     ++rows;
 }
+
+std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
+{
+    for (const auto& row : matrix.matrix_data)
+    {
+        for (const auto& elem : row)
+        {
+            os << elem << " ";
+        }
+        os << "\n";
+    }
+    return os;
+}   
